@@ -32,6 +32,7 @@ namespace FoutenAfhandeling.Wpf
         {
             string resultaat = "";
             string errorMessage = "";
+            int getal1, getal2;
             errorTextBlock.Text = errorMessage;
 
             try
@@ -40,27 +41,28 @@ namespace FoutenAfhandeling.Wpf
                 getal2 = int.Parse(input2);
                 if (bewerking == "/")
                 {
-                float quotient;
-                quotient = getal1 / getal2;
-                resultaat = quotient.ToString();
-                if (getal1 % getal2 > 0)
-                 {
-                    resultaat += " rest " + getal1 % getal2;
-                 }
-                }
-            else if (bewerking == "+")
-            {
-                int som = TelPositieveGetallenOp(getal1, getal2);
-                resultaat = som.ToString();
-            }
-            }
+                    float quotient;
+                    quotient = getal1 / getal2;
+                    resultaat = quotient.ToString();
 
+                    if (getal1 % getal2 > 0)
+                    {
+                        resultaat += " rest " + getal1 % getal2;
+                    }
+                }
+                else if (bewerking == "+")
+                {
+                    int som = TelPositieveGetallenOp(getal1, getal2);
+                    resultaat = som.ToString();
+                }
+
+            }
             catch (Exception fEx)
             {
                 errorMessage = "Wil enkel positieve gehele getallen invoeren\n";
                 errorMessage += "Details:" + fEx.Message + "\n";
                 errorTextBlock.Text = errorMessage;
-                
+
             }
 
             catch (Exception gEx)
